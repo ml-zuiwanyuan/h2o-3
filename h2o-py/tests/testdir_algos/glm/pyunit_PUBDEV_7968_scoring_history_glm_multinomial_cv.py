@@ -52,7 +52,7 @@ def test_glm_scoring_history_multinomial():
     # check if scoring_interval is set to 4, the output should be the same for every fourth iteration
     print("Building model with score_interval=4 and cross-validation on.  Should generate same model as "
           "other models and same scoring history at the correct iteration.")
-    h2o_model_cv_4th = glm(family="multinomial", score_iteration_interval=4, nfolds = 2, fold_assignment="modulo", 
+    h2o_model_cv_4th = glm(family="multinomial", score_iteration_interval=3, nfolds = 2, fold_assignment="modulo", 
                            seed=1234)
     h2o_model_cv_4th.train(x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], y="C11", training_frame=train, validation_frame=valid)
     pyunit_utils.assertEqualScoringHistoryIteration(h2o_model_cv, h2o_model_cv_4th, col_list_compare) 
